@@ -16,7 +16,7 @@ A beautiful and attractive Marathi website to send **Gudhi Padwa wishes** to fri
 
 ## 🖥️ Live Website
 
-👉 https://yourusername.github.io/gudhi-padwa-wishes/
+👉 https://somnathhake09.github.io/gudhi-padwa-wishes/
 
 ---
 
