@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>गुढीपाडव्याच्या हार्दिक शुभेच्छा!</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Noto Sans Devanagari',sans-serif;
+  min-height:100vh;overflow-x:hidden;
+  background:#1a0a00;
+  position:relative;
+}
+/* Sky background with morning sunrise feel */
+.sky{
+  position:fixed;inset:0;z-index:0;
+  background:linear-gradient(180deg,
+    #1a0050 0%,
+    #6B21A8 12%,
+    #c2410c 28%,
+    #ea580c 40%,
+    #f97316 52%,
+    #fbbf24 65%,
+    #fde68a 80%,
+    #fff7ed 100%
+  );
+}
+.sky::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 40% at 50% 60%, rgba(255,200,80,.18) 0%, transparent 70%);
+  animation:sunGlow 4s ease-in-out infinite alternate;
+}
+@keyframes sunGlow{from{opacity:.5}to{opacity:1}}
+
+canvas#pc{position:fixed;inset:0;pointer-events:none;z-index:2;}
+.fem{position:fixed;pointer-events:none;z-index:2;animation:fU linear infinite;opacity:0;will-change:transform;}
+@keyframes fU{0%{opacity:0;transform:translateY(0) rotate(0deg) scale(1)}8%{opacity:.9}92%{opacity:.5}100%{opacity:0;transform:translateY(-110vh) rotate(540deg) scale(.5)}}
+
+.page{position:relative;z-index:3;max-width:500px;margin:0 auto;padding:10px 14px 60px;}
+
+/* ─── TORAN ─── */
+.toran{
+  display:flex;justify-content:center;
+  animation:dropIn .9s cubic-bezier(.34,1.56,.64,1) both;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));
+}
+@keyframes dropIn{from{transform:translateY(-80px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+/* ─── GUDHI ─── */
+.gudhi-scene{
+  display:flex;justify-content:center;align-items:flex-end;
+  margin:6px 0 12px;
+  animation:riseScene 1.3s cubic-bezier(.22,1,.36,1) .2s both;
+  filter:drop-shadow(0 12px 30px rgba(0,0,0,.5));
+}
+@keyframes riseScene{from{transform:translateY(120px) scale(.55);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+
+/* golden glow behind gudhi */
+.gudhi-glow-wrap{position:relative;display:inline-block;}
+.gudhi-glow-wrap::before{
+  content:'';position:absolute;
+  top:5%;left:50%;transform:translateX(-50%);
+  width:220px;height:70%;
+  background:radial-gradient(ellipse,rgba(255,200,60,.5) 0%,transparent 68%);
+  border-radius:50%;pointer-events:none;z-index:-1;
+  animation:aureole 3s ease-in-out infinite alternate;
+}
+@keyframes aureole{
+  from{opacity:.4;transform:translateX(-50%) scale(1)}
+  to{opacity:1;transform:translateX(-50%) scale(1.3)}
+}
+
+/* wind sway on cloth */
+@keyframes clothWave{
+  0%{d:path("M140 68 C142 68,195 76,226 92 C252 106,255 128,246 146 C237 164,215 172,196 175 C178 178,160 175,150 171 C142 168,139 162,140 156 Z")}
+  50%{d:path("M140 68 C142 68,200 72,232 88 C258 102,262 126,252 144 C242 162,218 172,198 175 C180 178,162 175,152 171 C143 168,140 162,140 156 Z")}
+  100%{d:path("M140 68 C142 68,193 79,224 95 C250 109,252 131,243 149 C234 167,212 174,193 177 C175 180,158 176,148 172 C140 169,138 163,140 156 Z")}
+}
+
+/* text */
+.heading{
+  text-align:center;color:#fff;
+  font-size:clamp(1.6rem,7.5vw,2.6rem);font-weight:900;line-height:1.3;
+  text-shadow:0 2px 0 #92400e,0 5px 0 #78350f,0 10px 28px rgba(0,0,0,.6);
+  animation:fadeUp .9s ease-out .8s both;margin-bottom:4px;letter-spacing:.3px;
+}
+.subhead{
+  text-align:center;color:#fde68a;
+  font-size:clamp(.92rem,4vw,1.15rem);font-weight:600;
+  text-shadow:0 2px 10px rgba(0,0,0,.5);
+  animation:fadeUp .9s ease-out 1s both;margin-bottom:14px;
+}
+@keyframes fadeUp{from{transform:translateY(35px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+.dv{display:flex;align-items:center;gap:9px;margin:12px 0;}
+.dl{flex:1;height:2px;background:linear-gradient(90deg,transparent,#fbbf24,transparent);}
+
+/* cards */
+.card{
+  background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(251,191,36,.12));
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1.5px solid rgba(251,191,36,.45);border-radius:24px;
+  padding:24px 22px;margin-bottom:16px;
+  box-shadow:0 10px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.2);
+  animation:fadeUp .9s ease-out 1.05s both;
+}
+.card p{color:#fff;font-size:clamp(.98rem,4.2vw,1.14rem);line-height:2.05;text-align:center;text-shadow:0 1px 6px rgba(0,0,0,.45);font-weight:500;}
+.card p strong{color:#fde68a;font-weight:700;}
+
+.name-card{
+  background:linear-gradient(135deg,rgba(146,64,14,.4),rgba(234,88,12,.25));
+  backdrop-filter:blur(14px);border:1.5px solid rgba(251,191,36,.42);
+  border-radius:22px;padding:20px 20px;margin-bottom:16px;
+  animation:fadeUp .9s ease-out 1.15s both;
+}
+.name-card label{display:block;color:#fde68a;font-size:.88rem;font-weight:700;margin-bottom:10px;text-align:center;letter-spacing:.3px;}
+.nd{color:#fff;font-size:clamp(1.05rem,4.5vw,1.28rem);font-weight:700;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.5);margin-bottom:14px;min-height:34px;}
+.nv{color:#fde68a;border-bottom:2px dashed rgba(251,191,36,.65);padding:0 6px 2px;min-width:60px;display:inline-block;}
+.nr{display:flex;gap:10px;}
+.ni{flex:1;padding:12px 15px;border-radius:13px;border:1.5px solid rgba(251,191,36,.55);background:rgba(255,255,255,.11);color:#fff;font-family:'Noto Sans Devanagari',sans-serif;font-size:1rem;outline:none;transition:border .25s,background .25s;}
+.ni::placeholder{color:rgba(255,255,255,.4);}
+.ni:focus{border-color:#fbbf24;background:rgba(255,255,255,.18);}
+.btn-s{padding:12px 17px;border-radius:13px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#1a0500;font-family:'Noto Sans Devanagari',sans-serif;font-size:.93rem;font-weight:800;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;white-space:nowrap;box-shadow:0 3px 12px rgba(251,191,36,.4);}
+.btn-s:hover{transform:scale(1.06);box-shadow:0 5px 18px rgba(251,191,36,.6);}
+.btn-s:active{transform:scale(.97);}
+
+.sh-card{background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(234,88,12,.14));backdrop-filter:blur(14px);border:1.5px solid rgba(255,255,255,.2);border-radius:22px;padding:22px 20px 20px;animation:fadeUp .9s ease-out 1.25s both;}
+.sh-title{color:#fde68a;font-size:1rem;font-weight:700;text-align:center;margin-bottom:15px;}
+.sh-btns{display:flex;flex-direction:column;gap:12px;}
+.sh-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:15px;border:none;font-family:'Noto Sans Devanagari',sans-serif;font-size:1.02rem;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;letter-spacing:.1px;}
+.sh-btn:hover{transform:translateY(-3px);}
+.sh-btn:active{transform:translateY(0);}
+.wa{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 4px 16px rgba(34,197,94,.35);}
+.fb{background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;box-shadow:0 4px 16px rgba(59,130,246,.35);}
+.ig{background:linear-gradient(135deg,#f97316,#ec4899,#a855f7);color:#fff;box-shadow:0 4px 16px rgba(236,72,153,.3);}
+
+.footer{text-align:center;color:rgba(255,255,255,.45);font-size:.72rem;margin-top:28px;animation:fadeUp .9s ease-out 1.4s both;}
+@media(max-width:400px){.page{padding:8px 10px 42px;}.card,.name-card,.sh-card{padding:16px 13px;}}
+</style>
+</head>
+<body>
+<div class="sky"></div>
+<canvas id="pc"></canvas>
+<div id="fw" style="position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;"></div>
+
+<div class="page">
+
+<!-- ══════════════ TORAN (तोरण) ══════════════ -->
+<div class="toran">
+<svg width="100%" viewBox="0 0 380 68" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="ropeG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#92400e"/>
+      <stop offset="50%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+  </defs>
+  <!-- Hanging rope -->
+  <path d="M0 6 Q95 36 190 6 Q285 -24 380 6" stroke="url(#ropeG)" stroke-width="3" fill="none"/>
+  <!-- Leaves & flowers repeated every ~28px -->
+  <!-- Using macro pattern: leaf then flower -->
+  <!-- pos 0 -->
+  <g transform="translate(4,6)"><ellipse rx="7" ry="2.5" fill="#15803d" transform="rotate(-40)"/><ellipse rx="7" ry="2.5" fill="#16a34a" transform="rotate(40)"/></g>
+  <g transform="translate(18,12)"><circle r="9" fill="#ea580c"/><circle r="5.5" fill="#fbbf24"/><circle r="2.2" fill="#fffbeb"/></g>
+  <!-- pos 1 -->
+  <g transform="translate(38,18)"><ellipse rx="7" ry="2.5" fill="#15803d" transform="rotate(-35)"/><ellipse rx="7" ry="2.5" fill="#22c55e" transform="rotate(35)"/></g>
+  <g transform="translate(52,23)"><circle r="9" fill="#fbbf24"/><circle r="5.5" fill="#ea580c"/><circle r="2.2" fill="#fffbeb"/></g>
+  <!-- pos 2 -->
+  <g transform="translate(72,27)"><ellipse rx="7" ry="2.5" fill="#15803d" transform="rotate(-30)"/><ellipse rx="7" ry="2.5" fill="#16a34a" transform="rotate(30)"/></g>
+  <g transform="translate(86,30)"><circle r="9" fill="#dc2626"/><circle r="5.5" fill="#fbbf24"/><circle r="2.2" fill="#fffbeb"/></g>
+  <!-- pos 3 -->
+  <g transform="translate(106,32)"><ellipse rx="7" ry="2.5" fill="#166534" transform="rotate(-28)"/><ellipse rx="7" ry="2.5" fill="#22c55e" transform="rotate(28)"/></g>
+  <g transform="translate(120,33)"><circle r="9" fill="#ea580c"/><circle r="5.5" fill="#fde68a"/><circle r="2.2" fill="#fff"/></g>
+  <!-- pos 4 (center) -->
+  <g transform="translate(140,34)"><ellipse rx="8" ry="3" fill="#15803d" transform="rotate(-25)"/><ellipse rx="8" ry="3" fill="#16a34a" transform="rotate(25)"/></g>
+  <g transform="translate(156,34)"><circle r="10" fill="#fbbf24"/><circle r="6" fill="#dc2626"/><circle r="2.5" fill="#fff"/></g>
+  <!-- pos 5 -->
+  <g transform="translate(176,33)"><ellipse rx="7" ry="2.5" fill="#166534" transform="rotate(-28)"/><ellipse rx="7" ry="2.5" fill="#22c55e" transform="rotate(28)"/></g>
+  <g transform="translate(190,32)"><circle r="9" fill="#ea580c"/><circle r="5.5" fill="#fbbf24"/><circle r="2.2" fill="#fff"/></g>
+  <!-- pos 6 -->
+  <g transform="translate(210,29)"><ellipse rx="7" ry="2.5" fill="#15803d" transform="rotate(-30)"/><ellipse rx="7" ry="2.5" fill="#16a34a" transform="rotate(30)"/></g>
+  <g transform="translate(224,26)"><circle r="9" fill="#fbbf24"/><circle r="5.5" fill="#ea580c"/><circle r="2.2" fill="#fff"/></g>
+  <!-- pos 7 -->
+  <g transform="translate(244,22)"><ellipse rx="7" ry="2.5" fill="#15803d" transform="rotate(-35)"/><ellipse rx="7" ry="2.5" fill="#22c55e" transform="rotate(35)"/></g>
+  <g transform="translate(258,18)"><circle r="9" fill="#dc2626"/><circle r="5.5" fill="#fbbf24"/><circle r="2.2" fill="#fff"/></g>
+  <!-- pos 8 -->
+  <g transform="translate(278,13)"><ellipse rx="7" ry="2.5" fill="#166534" transform="rotate(-38)"/><ellipse rx="7" ry="2.5" fill="#16a34a" transform="rotate(38)"/></g>
+  <g transform="translate(292,10)"><circle r="9" fill="#ea580c"/><circle r="5.5" fill="#fbbf24"/><circle r="2.2" fill="#fff"/></g>
+  <!-- pos 9 -->
+  <g transform="translate(312,7)"><ellipse rx="7" ry="2.5" fill="#15803d" transform="rotate(-40)"/><ellipse rx="7" ry="2.5" fill="#22c55e" transform="rotate(40)"/></g>
+  <g transform="translate(326,6)"><circle r="9" fill="#fbbf24"/><circle r="5.5" fill="#dc2626"/><circle r="2.2" fill="#fff"/></g>
+  <!-- pos 10 -->
+  <g transform="translate(346,6)"><ellipse rx="7" ry="2.5" fill="#15803d" transform="rotate(-38)"/><ellipse rx="7" ry="2.5" fill="#16a34a" transform="rotate(38)"/></g>
+  <g transform="translate(362,7)"><circle r="9" fill="#ea580c"/><circle r="5.5" fill="#fbbf24"/><circle r="2.2" fill="#fff"/></g>
+</svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PROPER MARATHI GUDHI — Full detailed SVG
+     Structure: bamboo pole → tied cloth → mango leaves
+                → copper kalash → coconut → marigold crown
+                → marigold garland hanging on side
+     ══════════════════════════════════════════════════════ -->
+<div class="gudhi-scene">
+<div class="gudhi-glow-wrap">
+<svg id="gudhiSVG" width="300" height="500" viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg">
+<defs>
+
+  <!-- ── BAMBOO gradients ── -->
+  <linearGradient id="bamL" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%"   stop-color="#6a9955"/>
+    <stop offset="18%"  stop-color="#b8d9a0"/>
+    <stop offset="50%"  stop-color="#d4edbc"/>
+    <stop offset="78%"  stop-color="#8fbb6e"/>
+    <stop offset="100%" stop-color="#4a7a38"/>
+  </linearGradient>
+  <linearGradient id="bamNode" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%"   stop-color="#4a7a38"/>
+    <stop offset="40%"  stop-color="#3a6228"/>
+    <stop offset="100%" stop-color="#2e5220"/>
+  </linearGradient>
+
+  <!-- ── COPPER KALASH gradients ── -->
+  <radialGradient id="copperBody" cx="30%" cy="25%" r="70%">
+    <stop offset="0%"   stop-color="#ffd5a0"/>
+    <stop offset="20%"  stop-color="#e8a040"/>
+    <stop offset="50%"  stop-color="#c47a22"/>
+    <stop offset="78%"  stop-color="#9a5810"/>
+    <stop offset="100%" stop-color="#6b3a08"/>
+  </radialGradient>
+  <radialGradient id="copperShine" cx="25%" cy="20%" r="45%">
+    <stop offset="0%"   stop-color="rgba(255,230,180,.85)"/>
+    <stop offset="60%"  stop-color="rgba(255,200,100,.2)"/>
+    <stop offset="100%" stop-color="transparent"/>
+  </radialGradient>
+  <radialGradient id="copperDark" cx="80%" cy="80%" r="50%">
+    <stop offset="0%"   stop-color="rgba(80,30,0,.5)"/>
+    <stop offset="100%" stop-color="transparent"/>
+  </radialGradient>
+  <linearGradient id="goldBand" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%"   stop-color="#fff5b0"/>
+    <stop offset="30%"  stop-color="#ffd700"/>
+    <stop offset="70%"  stop-color="#e6ac00"/>
+    <stop offset="100%" stop-color="#b8860b"/>
+  </linearGradient>
+
+  <!-- ── SILK CLOTH gradients ── -->
+  <linearGradient id="clothMain" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#ffb347"/>
+    <stop offset="30%"  stop-color="#ff6a00"/>
+    <stop offset="70%"  stop-color="#e65100"/>
+    <stop offset="100%" stop-color="#bf360c"/>
+  </linearGradient>
+  <linearGradient id="clothShad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%"   stop-color="rgba(0,0,0,.25)"/>
+    <stop offset="40%"  stop-color="transparent"/>
+    <stop offset="100%" stop-color="rgba(0,0,0,.15)"/>
+  </linearGradient>
+  <linearGradient id="clothBorder" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#fff5b0"/>
+    <stop offset="50%"  stop-color="#ffd700"/>
+    <stop offset="100%" stop-color="#b8860b"/>
+  </linearGradient>
+
+  <!-- ── COCONUT gradients ── -->
+  <radialGradient id="coconutG" cx="35%" cy="30%" r="65%">
+    <stop offset="0%"   stop-color="#a07850"/>
+    <stop offset="50%"  stop-color="#6d4c2a"/>
+    <stop offset="100%" stop-color="#3e2410"/>
+  </radialGradient>
+
+  <!-- ── MARIGOLD gradients ── -->
+  <radialGradient id="mgFlower" cx="40%" cy="35%" r="60%">
+    <stop offset="0%"   stop-color="#ffe082"/>
+    <stop offset="60%"  stop-color="#ff8f00"/>
+    <stop offset="100%" stop-color="#e65100"/>
+  </radialGradient>
+
+  <!-- ── DROP SHADOWS ── -->
+  <filter id="dropSh" x="-30%" y="-20%" width="160%" height="160%">
+    <feDropShadow dx="3" dy="6" stdDeviation="6" flood-color="rgba(0,0,0,.5)"/>
+  </filter>
+  <filter id="softSh" x="-20%" y="-15%" width="140%" height="140%">
+    <feDropShadow dx="1" dy="3" stdDeviation="3.5" flood-color="rgba(0,0,0,.4)"/>
+  </filter>
+  <filter id="glowF" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="4" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+
+  <!-- clip -->
+  <clipPath id="kalashClip">
+    <path d="M118 92 Q112 72 114 52 Q118 28 150 18 Q182 28 186 52 Q188 72 182 92 Q172 108 150 114 Q128 108 118 92Z"/>
+  </clipPath>
+</defs>
+
+<!-- ══ GROUND SHADOW ══ -->
+<ellipse cx="150" cy="495" rx="58" ry="8" fill="rgba(0,0,0,.3)"/>
+
+<!-- ══════════════════════════
+     BAMBOO POLE (बांबू काठी)
+     ══════════════════════════ -->
+<!-- main shaft -->
+<rect x="141" y="72" width="18" height="423" rx="9" fill="url(#bamL)" filter="url(#dropSh)"/>
+<!-- inner highlight stripe -->
+<rect x="144" y="72" width="5" height="423" rx="2.5" fill="rgba(255,255,255,.38)"/>
+<!-- right edge darkening -->
+<rect x="153" y="72" width="5" height="423" rx="2.5" fill="rgba(0,0,0,.15)"/>
+
+<!-- BAMBOO NODES (गाठी) — 6 realistic raised segments -->
+<g filter="url(#softSh)">
+  <g transform="translate(150,135)">
+    <ellipse rx="13" ry="5" fill="url(#bamNode)"/>
+    <ellipse rx="11" ry="3" fill="#5a9040" opacity=".5"/>
+    <ellipse rx="9"  ry="1.5" fill="rgba(255,255,255,.2)"/>
+  </g>
+  <g transform="translate(150,200)">
+    <ellipse rx="13" ry="5" fill="url(#bamNode)"/>
+    <ellipse rx="11" ry="3" fill="#5a9040" opacity=".5"/>
+    <ellipse rx="9"  ry="1.5" fill="rgba(255,255,255,.2)"/>
+  </g>
+  <g transform="translate(150,268)">
+    <ellipse rx="13" ry="5" fill="url(#bamNode)"/>
+    <ellipse rx="11" ry="3" fill="#5a9040" opacity=".5"/>
+    <ellipse rx="9"  ry="1.5" fill="rgba(255,255,255,.2)"/>
+  </g>
+  <g transform="translate(150,336)">
+    <ellipse rx="13" ry="5" fill="url(#bamNode)"/>
+    <ellipse rx="11" ry="3" fill="#5a9040" opacity=".5"/>
+    <ellipse rx="9"  ry="1.5" fill="rgba(255,255,255,.2)"/>
+  </g>
+  <g transform="translate(150,404)">
+    <ellipse rx="13" ry="5" fill="url(#bamNode)"/>
+    <ellipse rx="11" ry="3" fill="#5a9040" opacity=".5"/>
+    <ellipse rx="9"  ry="1.5" fill="rgba(255,255,255,.2)"/>
+  </g>
+  <g transform="translate(150,460)">
+    <ellipse rx="13" ry="5" fill="url(#bamNode)"/>
+    <ellipse rx="11" ry="3" fill="#5a9040" opacity=".5"/>
+  </g>
+</g>
+
+<!-- ══════════════════════════
+     KESHARI VASTRA (केशरी वस्त्र)
+     Billowing saffron silk cloth
+     tied just below the kalash
+     ══════════════════════════ -->
+<!-- CLOTH BODY — large triangular silk drape flying right -->
+<path id="clothPath" d="
+  M150 75
+  C 152 75, 205 82, 238 99
+  C 266 114, 272 138, 262 158
+  C 252 178, 228 188, 208 192
+  C 188 196, 170 193, 158 189
+  C 149 186, 146 180, 147 173
+  Z
+" fill="url(#clothMain)" filter="url(#dropSh)"/>
+
+<!-- cloth shadow overlay for 3D depth -->
+<path d="
+  M150 75
+  C 152 75, 205 82, 238 99
+  C 266 114, 272 138, 262 158
+  C 252 178, 228 188, 208 192
+  C 188 196, 170 193, 158 189
+  C 149 186, 146 180, 147 173
+  Z
+" fill="url(#clothShad)"/>
+
+<!-- cloth fold lines (wrinkles) for realism -->
+<path d="M158 78 Q210 90 236 115" stroke="rgba(255,200,100,.22)" stroke-width="1.8" fill="none"/>
+<path d="M155 92 Q202 103 226 132" stroke="rgba(255,200,100,.16)" stroke-width="1.4" fill="none"/>
+<path d="M152 110 Q190 120 210 150" stroke="rgba(255,200,100,.12)" stroke-width="1.2" fill="none"/>
+<path d="M151 130 Q178 140 194 168" stroke="rgba(255,200,100,.1)" stroke-width="1" fill="none"/>
+<!-- cloth underside shadow edge -->
+<path d="M147 173 C 149 186, 158 189, 170 193 C 188 196, 208 192, 228 188 C 248 184, 262 172, 262 158"
+  stroke="rgba(0,0,0,.3)" stroke-width="3" fill="none"/>
+
+<!-- GOLD BORDER on cloth (सोन्याची किनार) — thick decorative -->
+<path d="
+  M150 75
+  C 152 75, 205 82, 238 99
+  C 266 114, 272 138, 262 158
+  C 252 178, 228 188, 208 192
+  C 188 196, 170 193, 158 189
+  C 149 186, 146 180, 147 173
+" stroke="url(#clothBorder)" stroke-width="3.5" fill="none"/>
+
+<!-- Gold corner jewels on cloth -->
+<circle cx="238" cy="99" r="4" fill="#ffd700" stroke="#b8860b" stroke-width="1"/>
+<circle cx="262" cy="158" r="4" fill="#ffd700" stroke="#b8860b" stroke-width="1"/>
+<circle cx="208" cy="192" r="3.5" fill="#ffd700" stroke="#b8860b" stroke-width="1"/>
+
+<!-- SWASTIK on cloth (स्वस्तिक) — prominent gold -->
+<g transform="translate(210,128)" filter="url(#glowF)">
+  <g fill="#ffd700">
+    <!-- vertical bar -->
+    <rect x="-3" y="-13" width="6" height="26"/>
+    <!-- horizontal bar -->
+    <rect x="-13" y="-3" width="26" height="6"/>
+    <!-- four arms -->
+    <rect x="3"  y="-13" width="8" height="8"/>
+    <rect x="3"  y="5"   width="8" height="8"/>
+    <rect x="-13" y="-13" width="8" height="8"/>
+    <rect x="-13" y="5"   width="8" height="8"/>
+  </g>
+  <!-- swastik glow ring -->
+  <circle r="20" fill="none" stroke="rgba(255,215,0,.3)" stroke-width="2"/>
+</g>
+<!-- OM symbol on cloth -->
+<text x="195" y="160" font-size="18" fill="rgba(255,215,0,.6)" text-anchor="middle" font-family="serif">ॐ</text>
+
+<!-- ══════════════════════════
+     MANGO LEAVES (आंब्याची पाने)
+     Fanning out from tie point
+     ══════════════════════════ -->
+<g filter="url(#softSh)">
+  <!-- LEFT cluster — 5 leaves fanning left-up -->
+  <!-- leaf 1: far left horizontal -->
+  <path d="M148 75 Q102 63 92 74 Q94 88 148 80 Z" fill="#15803d"/>
+  <path d="M148 76 Q118 68 110 78" stroke="#14532d" stroke-width=".7" fill="none" opacity=".6"/>
+  <!-- leaf 2: left-upper diagonal -->
+  <path d="M148 74 Q110 48 104 58 Q106 72 148 76 Z" fill="#16a34a"/>
+  <path d="M148 75 Q116 54 106 62" stroke="#14532d" stroke-width=".7" fill="none" opacity=".5"/>
+  <!-- leaf 3: upper left -->
+  <path d="M148 73 Q120 36 116 46 Q118 60 148 74 Z" fill="#22c55e"/>
+  <path d="M148 73 Q122 40 118 50" stroke="#14532d" stroke-width=".7" fill="none" opacity=".5"/>
+  <!-- leaf 4: top-left -->
+  <path d="M149 72 Q138 28 130 38 Q130 52 149 73 Z" fill="#15803d"/>
+  <path d="M149 72 Q136 32 132 42" stroke="#14532d" stroke-width=".7" fill="none" opacity=".5"/>
+
+  <!-- RIGHT cluster — 5 leaves fanning right-up -->
+  <!-- leaf 1: far right horizontal -->
+  <path d="M152 75 Q198 63 208 74 Q206 88 152 80 Z" fill="#166534"/>
+  <path d="M152 76 Q182 68 190 78" stroke="#14532d" stroke-width=".7" fill="none" opacity=".6"/>
+  <!-- leaf 2: right-upper diagonal -->
+  <path d="M152 74 Q190 48 196 58 Q194 72 152 76 Z" fill="#4ade80"/>
+  <path d="M152 75 Q184 54 194 62" stroke="#14532d" stroke-width=".7" fill="none" opacity=".5"/>
+  <!-- leaf 3: upper right -->
+  <path d="M152 73 Q180 36 184 46 Q182 60 152 74 Z" fill="#16a34a"/>
+  <path d="M152 73 Q178 40 182 50" stroke="#14532d" stroke-width=".7" fill="none" opacity=".5"/>
+  <!-- leaf 4: top-right -->
+  <path d="M151 72 Q162 28 170 38 Q170 52 151 73 Z" fill="#15803d"/>
+  <path d="M151 72 Q164 32 168 42" stroke="#14532d" stroke-width=".7" fill="none" opacity=".5"/>
+
+  <!-- TOP two leaves pointing straight up -->
+  <path d="M150 72 Q140 26 144 36 Q148 52 150 72 Z" fill="#22c55e"/>
+  <path d="M150 72 Q160 26 156 36 Q152 52 150 72 Z" fill="#4ade80"/>
+</g>
+
+<!-- TIE STRING (दोरी/सुतळी) -->
+<ellipse cx="150" cy="78" rx="10" ry="5" fill="#f59e0b" stroke="#d97706" stroke-width="1.2"/>
+<path d="M143 77 Q150 72 157 77" stroke="#92400e" stroke-width="1.5" fill="none"/>
+
+<!-- ══════════════════════════
+     MARIGOLD GARLAND (झेंडूचा हार)
+     Hanging on left side of bamboo
+     ══════════════════════════ -->
+<!-- garland string -->
+<path d="M136 82 Q118 118 121 158 Q124 196 126 230 Q127 258 128 278"
+  stroke="#92400e" stroke-width="2.5" fill="none" stroke-dasharray="4,2.5"/>
+
+<!-- individual marigold flowers with petals -->
+<g filter="url(#softSh)">
+  <!-- flower 1 at y~100 -->
+  <g transform="translate(120,100)">
+    <ellipse rx="10" ry="4" fill="#ff8f00" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ffa000" transform="rotate(36)" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ff8f00" transform="rotate(72)" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ffc107" transform="rotate(108)" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ff8f00" transform="rotate(144)" opacity=".85"/>
+    <circle r="6" fill="#ffe082"/>
+    <circle r="3" fill="#ff6d00"/>
+    <circle r="1.2" fill="#fffde7"/>
+  </g>
+  <!-- flower 2 at y~128 -->
+  <g transform="translate(118,130)">
+    <ellipse rx="9" ry="3.5" fill="#e65100" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#ff6d00" transform="rotate(36)" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#e65100" transform="rotate(72)" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#ff6d00" transform="rotate(108)" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#e65100" transform="rotate(144)" opacity=".85"/>
+    <circle r="5.5" fill="#ffd740"/>
+    <circle r="2.8" fill="#ff6d00"/>
+    <circle r="1.1" fill="#fff"/>
+  </g>
+  <!-- flower 3 at y~158 -->
+  <g transform="translate(119,160)">
+    <ellipse rx="10" ry="4" fill="#ff8f00" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ffa000" transform="rotate(36)" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ff8f00" transform="rotate(72)" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ffca28" transform="rotate(108)" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ff8f00" transform="rotate(144)" opacity=".85"/>
+    <circle r="6" fill="#fff59d"/>
+    <circle r="3" fill="#ff8f00"/>
+    <circle r="1.2" fill="#fff"/>
+  </g>
+  <!-- flower 4 at y~190 -->
+  <g transform="translate(121,192)">
+    <ellipse rx="9" ry="3.5" fill="#e65100" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#ff6d00" transform="rotate(36)" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#e65100" transform="rotate(72)" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#ff6d00" transform="rotate(108)" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#e65100" transform="rotate(144)" opacity=".85"/>
+    <circle r="5.5" fill="#ffd740"/>
+    <circle r="2.8" fill="#e65100"/>
+    <circle r="1.1" fill="#fff"/>
+  </g>
+  <!-- flower 5 at y~222 -->
+  <g transform="translate(124,224)">
+    <ellipse rx="10" ry="4" fill="#ff8f00" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ffa000" transform="rotate(36)" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ff8f00" transform="rotate(72)" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ffc107" transform="rotate(108)" opacity=".85"/>
+    <ellipse rx="10" ry="4" fill="#ff8f00" transform="rotate(144)" opacity=".85"/>
+    <circle r="6" fill="#ffe082"/>
+    <circle r="3" fill="#ff6d00"/>
+    <circle r="1.2" fill="#fff"/>
+  </g>
+  <!-- flower 6 at y~255 -->
+  <g transform="translate(126,257)">
+    <ellipse rx="9" ry="3.5" fill="#ff6d00" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#e65100" transform="rotate(36)" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#ff6d00" transform="rotate(72)" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#e65100" transform="rotate(108)" opacity=".85"/>
+    <ellipse rx="9" ry="3.5" fill="#ff6d00" transform="rotate(144)" opacity=".85"/>
+    <circle r="5.5" fill="#ffd740"/>
+    <circle r="2.8" fill="#ff6d00"/>
+    <circle r="1.1" fill="#fff"/>
+  </g>
+</g>
+
+<!-- ══════════════════════════
+     TAMBA KALASH (तांब्याचा कलश)
+     Full copper vessel with neck,
+     belly, foot ring, decoration
+     ══════════════════════════ -->
+
+<!-- FOOT / base ring of kalash -->
+<path d="M132 110 Q130 118 138 122 Q150 126 162 122 Q170 118 168 110 Z"
+  fill="#8b4513" filter="url(#softSh)"/>
+<ellipse cx="150" cy="110" rx="20" ry="5.5" fill="url(#goldBand)"/>
+
+<!-- MAIN KALASH BODY — wide spherical belly -->
+<path d="
+  M130 110
+  Q122 96  124 76
+  Q126 52  150 40
+  Q174 52  176 76
+  Q178 96  170 110
+  Q162 124 150 128
+  Q138 124 130 110
+  Z
+" fill="url(#copperBody)" filter="url(#dropSh)"/>
+
+<!-- copper shine highlight -->
+<path d="
+  M130 110
+  Q122 96  124 76
+  Q126 52  150 40
+  Q174 52  176 76
+  Q178 96  170 110
+  Q162 124 150 128
+  Q138 124 130 110
+  Z
+" fill="url(#copperShine)"/>
+
+<!-- copper dark shadow (bottom right) -->
+<path d="
+  M130 110
+  Q122 96  124 76
+  Q126 52  150 40
+  Q174 52  176 76
+  Q178 96  170 110
+  Q162 124 150 128
+  Q138 124 130 110
+  Z
+" fill="url(#copperDark)"/>
+
+<!-- KALASH NECK (narrower top section) -->
+<path d="M138 44 Q136 34 140 26 Q150 20 160 26 Q164 34 162 44"
+  fill="#a0521a"/>
+<ellipse cx="150" cy="44" rx="13" ry="4.5" fill="url(#goldBand)" stroke="#b8860b" stroke-width=".5"/>
+
+<!-- KALASH NECK UPPER RIM -->
+<ellipse cx="150" cy="26" rx="11" ry="3.5" fill="url(#goldBand)"/>
+
+<!-- DECORATIVE GOLD BANDS on belly -->
+<path d="M132 72 Q150 66 168 72" stroke="url(#goldBand)" stroke-width="3" fill="none"/>
+<path d="M130 82 Q150 76 170 82" stroke="#ffd700" stroke-width="1.8" fill="none" opacity=".7"/>
+<path d="M130 94 Q150 88 170 94" stroke="url(#goldBand)" stroke-width="2.5" fill="none"/>
+
+<!-- Fine etching lines (नक्षीकाम) -->
+<path d="M133 60 Q150 56 167 60" stroke="rgba(255,220,150,.5)" stroke-width="1" fill="none"/>
+<path d="M131 68 Q150 64 169 68" stroke="rgba(255,220,150,.4)" stroke-width=".8" fill="none"/>
+<path d="M130 100 Q150 96 170 100" stroke="rgba(255,220,150,.35)" stroke-width=".8" fill="none"/>
+
+<!-- Decorative dots row on belly -->
+<g fill="#ffd700" opacity=".75">
+  <circle cx="138" cy="88" r="2.5"/>
+  <circle cx="145" cy="86" r="2.5"/>
+  <circle cx="150" cy="86" r="2.5"/>
+  <circle cx="155" cy="86" r="2.5"/>
+  <circle cx="162" cy="88" r="2.5"/>
+</g>
+
+<!-- SWASTIK on kalash front -->
+<g transform="translate(142,68)" filter="url(#glowF)">
+  <g fill="#ffd700" opacity=".92">
+    <rect x="-2" y="-10" width="4" height="20"/>
+    <rect x="-10" y="-2" width="20" height="4"/>
+    <rect x="2"  y="-10" width="6" height="6"/>
+    <rect x="2"  y="4"   width="6" height="6"/>
+    <rect x="-10" y="-10" width="6" height="6"/>
+    <rect x="-10" y="4"   width="6" height="6"/>
+  </g>
+</g>
+
+<!-- MOUTH of kalash (top opening rim) -->
+<ellipse cx="150" cy="110" rx="20" ry="5.5" fill="url(#goldBand)"/>
+
+<!-- ══════════════════════════
+     COCONUT (नारळ) atop kalash
+     ══════════════════════════ -->
+<ellipse cx="150" cy="27" rx="18" ry="12" fill="url(#coconutG)" filter="url(#softSh)"/>
+<!-- coconut surface texture -->
+<path d="M136 24 Q150 20 164 24" stroke="#3e2410" stroke-width=".8" fill="none" opacity=".5"/>
+<path d="M134 28 Q150 24 166 28" stroke="#3e2410" stroke-width=".7" fill="none" opacity=".4"/>
+<path d="M136 32 Q150 28 164 32" stroke="#3e2410" stroke-width=".6" fill="none" opacity=".3"/>
+<!-- fibre bump -->
+<ellipse cx="148" cy="24" rx="7" ry="4.5" fill="#8d6040" opacity=".6"/>
+<!-- three eyes of coconut -->
+<circle cx="143" cy="23" r="2.2" fill="#1a0500" opacity=".9"/>
+<circle cx="150" cy="21" r="2.2" fill="#1a0500" opacity=".9"/>
+<circle cx="157" cy="23" r="2.2" fill="#1a0500" opacity=".9"/>
+<!-- coconut top sheen -->
+<ellipse cx="144" cy="20" rx="5" ry="3" fill="rgba(255,210,160,.25)"/>
+
+<!-- COCONUT SPROUT / tuft (शेंडी) -->
+<path d="M143 16 Q134 4  128 10" stroke="#166534" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+<path d="M148 13 Q146 1  150 6"  stroke="#22c55e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+<path d="M153 14 Q158 2  164 7"  stroke="#166534" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+<path d="M140 16 Q130 6  124 12" stroke="#15803d" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<path d="M158 15 Q166 5  172 10" stroke="#15803d" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<!-- small leaves at tips -->
+<path d="M128 10 Q120 4 117 9 Q120 15 128 12 Z" fill="#4ade80"/>
+<path d="M124 12 Q116 7 114 13 Q118 18 124 14 Z" fill="#22c55e"/>
+<path d="M150 6  Q148-2 154 2 Q156 8 151 8 Z"   fill="#4ade80"/>
+<path d="M164 7  Q170 1 175 6 Q172 12 165 9 Z"  fill="#4ade80"/>
+<path d="M172 10 Q178 5 182 10 Q178 16 172 12 Z" fill="#22c55e"/>
+
+<!-- ══════════════════════════
+     MARIGOLD CROWN (फुलांचा मुकुट)
+     Ring of marigolds around coconut
+     ══════════════════════════ -->
+<g transform="translate(150,27)" filter="url(#softSh)">
+  <!-- outer petals ring (12-petal) -->
+  <ellipse rx="26" ry="9" fill="#ff8f00" opacity=".9"/>
+  <ellipse rx="26" ry="9" fill="#ffab40" transform="rotate(30)"  opacity=".82"/>
+  <ellipse rx="26" ry="9" fill="#ffd740" transform="rotate(60)"  opacity=".88"/>
+  <ellipse rx="26" ry="9" fill="#ff8f00" transform="rotate(90)"  opacity=".88"/>
+  <ellipse rx="26" ry="9" fill="#ffa000" transform="rotate(120)" opacity=".82"/>
+  <ellipse rx="26" ry="9" fill="#e65100" transform="rotate(150)" opacity=".88"/>
+  <!-- inner petals -->
+  <ellipse rx="15" ry="5.5" fill="#ffe082" opacity=".9"/>
+  <ellipse rx="15" ry="5.5" fill="#ffd700" transform="rotate(60)"  opacity=".85"/>
+  <ellipse rx="15" ry="5.5" fill="#ffab40" transform="rotate(120)" opacity=".85"/>
+  <!-- center disc -->
+  <circle r="8" fill="#fff59d"/>
+  <circle r="5" fill="#ff8f00"/>
+  <circle r="2.5" fill="#ffd700"/>
+  <circle r="1"   fill="#fff"/>
+</g>
+
+<!-- ══════════════════════════
+     POLE BASE / foot decoration
+     ══════════════════════════ -->
+<rect x="140" y="487" width="20" height="10" rx="5" fill="#5d4037"/>
+<rect x="138" y="493" width="24" height="5"  rx="2.5" fill="#4e342e"/>
+<!-- base plate -->
+<ellipse cx="150" cy="498" rx="22" ry="4" fill="#3e2723" opacity=".8"/>
+
+</svg>
+</div><!-- .gudhi-glow-wrap -->
+</div><!-- .gudhi-scene -->
+
+<!-- ── HEADINGS ── -->
+<h1 class="heading">गुढीपाडव्याच्या<br/>हार्दिक शुभेच्छा!</h1>
+<p class="subhead">🌺 नवीन वर्षाचे मराठमोळ्या पद्धतीने स्वागत! 🌺</p>
+
+<div class="dv"><div class="dl"></div><span style="font-size:1.3rem">🪔</span><div class="dl"></div></div>
+
+<!-- ── MESSAGE CARD ── -->
+<div class="card">
+  <p>
+    <strong>नवीन वर्ष</strong> तुमच्या आयुष्यात<br/>
+    <strong>सुख, समृद्धी, आरोग्य आणि यश</strong> घेऊन येवो. 🌸<br/><br/>
+    घरात गुढी उभारा, मनात आनंद भरा,<br/>
+    नव्या वर्षाचे उत्साहात स्वागत करा! 🌟<br/><br/>
+    <strong>गुढी उभारली आकाशी,<br/>
+    विजय आणि समृद्धी घरी येवो! 🙏</strong>
+  </p>
+</div>
+
+<div class="dv"><div class="dl"></div><span style="font-size:1.3rem">🌼</span><div class="dl"></div></div>
+
+<!-- ── NAME CARD ── -->
+<div class="name-card">
+  <label>✨ तुमचे नाव टाका आणि शुभेच्छा पाठवा ✨</label>
+  <div class="nd">आपला मित्र / मैत्रीण: <span class="nv" id="nd">___</span></div>
+  <div class="nr">
+    <input class="ni" id="ni" type="text" placeholder="तुमचे नाव लिहा..." maxlength="30"/>
+    <button class="btn-s" onclick="setName()">ठेवा ✓</button>
+  </div>
+</div>
+
+<!-- ── SHARE CARD ── -->
+<div class="sh-card">
+  <div class="sh-title">🎉 शुभेच्छा शेअर करा 🎉</div>
+  <div class="sh-btns">
+    <button class="sh-btn wa" onclick="doWA()">📲 शुभेच्छा पाठवा — WhatsApp</button>
+    <button class="sh-btn fb" onclick="doFB()">👍 Facebook वर शेअर करा</button>
+    <button class="sh-btn ig" onclick="doIG()">📸 Instagram साठी कॉपी करा</button>
+  </div>
+</div>
+
+<div class="footer">
+  🌸 गुढीपाडव्याच्या हार्दिक शुभेच्छा! — तुमची गुढी सदा उंच राहो 🌸
+  <div style="margin-top:14px;display:inline-block;background:#000;border:1.5px solid #FFD700;border-radius:10px;padding:8px 22px;">
+    <span style="color:#FFD700;font-family:'Noto Sans Devanagari',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:1px;">Author: Somnath Hake</span>
+    <div style="color:rgba(255,215,0,.5);font-size:.7rem;margin-top:3px;letter-spacing:1px;">🚩 जय भवानी | जय शिवराय 🚩</div>
+
+  </div>
+</div>
+</div><!-- .page -->
+
+<script>
+/* ─── Name ─── */
+function setName(){
+  const v=document.getElementById('ni').value.trim();
+  document.getElementById('nd').textContent=v||'___';
+}
+document.getElementById('ni').addEventListener('keydown',e=>{if(e.key==='Enter')setName();});
+
+/* ─── Share ─── */
+function getMsg(){
+  const n = document.getElementById('nd').textContent;
+  const nm = (n === '___' || n === '') ? '' : n;
+  const pageUrl = location.href;
+  // If running locally (file://), don't include URL
+  const urlPart = pageUrl.startsWith('http') ? '\n\n🔗 ' + pageUrl : '';
+  return '🌺 गुढीपाडव्याच्या हार्दिक शुभेच्छा! 🌺'
+    + '\n\nनवीन वर्ष तुमच्या आयुष्यात सुख, समृद्धी, आरोग्य आणि यश घेऊन येवो. 🙏'
+    + '\n\nगुढी उभारली आकाशी, विजय आणि समृद्धी घरी येवो!'
+    + (nm ? '\n\n— आपला मित्र / मैत्रीण: ' + nm : '')
+    + urlPart;
+}
+
+function doWA(){
+  const msg = getMsg();
+  // Works on mobile (opens app) and desktop (opens web.whatsapp.com)
+  const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+  const url = isMobile
+    ? 'whatsapp://send?text=' + encodeURIComponent(msg)
+    : 'https://web.whatsapp.com/send?text=' + encodeURIComponent(msg);
+  const w = window.open(url, '_blank');
+  // Fallback: if app didn't open on mobile, try web version
+  if(isMobile){
+    setTimeout(()=>{
+      window.open('https://api.whatsapp.com/send?text='+encodeURIComponent(msg),'_blank');
+    }, 1500);
+  }
+}
+
+function doFB(){
+  const pageUrl = location.href;
+  if(!pageUrl.startsWith('http')){
+    // File is local — can't share URL, so copy message instead
+    copyToClipboard(getMsg(), 'Facebook साठी संदेश कॉपी झाला! 📋\nFacebook उघडा → New Post → Paste करा. 👍');
+    return;
+  }
+  const url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
+  window.open(url, '_blank', 'width=600,height=500');
+}
+
+function doIG(){
+  // Instagram has no web share API — best approach is clipboard copy
+  copyToClipboard(getMsg(), '✅ संदेश कॉपी झाला!\n\nआता:\n1️⃣ Instagram उघडा\n2️⃣ New Post किंवा Story बनवा\n3️⃣ Caption मध्ये Paste करा 📸');
+}
+
+function copyToClipboard(text, successMsg){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text)
+      .then(()=>{ showToast(successMsg); })
+      .catch(()=>{ fallbackCopy(text, successMsg); });
+  } else {
+    fallbackCopy(text, successMsg);
+  }
+}
+
+function fallbackCopy(text, msg){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try{
+    document.execCommand('copy');
+    showToast(msg);
+  } catch(e){
+    alert('हा संदेश manually copy करा:\n\n' + text);
+  }
+  document.body.removeChild(ta);
+}
+
+function showToast(msg){
+  // Remove existing toast
+  const old = document.getElementById('shareToast');
+  if(old) old.remove();
+
+  const t = document.createElement('div');
+  t.id = 'shareToast';
+  t.style.cssText = [
+    'position:fixed','bottom:30px','left:50%',
+    'transform:translateX(-50%) translateY(20px)',
+    'background:rgba(20,10,0,.92)',
+    'color:#fde68a',
+    'font-family:Noto Sans Devanagari,sans-serif',
+    'font-size:.92rem','font-weight:600',
+    'padding:14px 22px','border-radius:16px',
+    'border:1.5px solid rgba(251,191,36,.5)',
+    'box-shadow:0 8px 30px rgba(0,0,0,.5)',
+    'z-index:9999','max-width:88vw','text-align:center',
+    'white-space:pre-line','line-height:1.6',
+    'transition:all .35s ease','opacity:0'
+  ].join(';');
+  t.textContent = msg;
+  document.body.appendChild(t);
+
+  // Animate in
+  requestAnimationFrame(()=>{
+    t.style.opacity = '1';
+    t.style.transform = 'translateX(-50%) translateY(0)';
+  });
+
+  // Animate out after 4s
+  setTimeout(()=>{
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(20px)';
+    setTimeout(()=>t.remove(), 400);
+  }, 4000);
+}
+
+/* ─── Falling petals canvas ─── */
+const C=document.getElementById('pc'),ctx=C.getContext('2d');
+function rsz(){C.width=innerWidth;C.height=innerHeight;}
+rsz();addEventListener('resize',rsz);
+const CL=['#ff6200','#ffd700','#dc2626','#fff176','#ff8f00','#ffcc02','#ffffff','#ff6d00'];
+const SH=['circle','petal','diamond','leaf'];
+class P{
+  constructor(init){this.reset(init);}
+  reset(i){
+    this.x=Math.random()*C.width;
+    this.y=i?Math.random()*-C.height:-25;
+    this.r=3+Math.random()*7;
+    this.vx=(Math.random()-.5)*1.2;
+    this.vy=.8+Math.random()*2;
+    this.a=Math.random()*Math.PI*2;
+    this.da=(Math.random()-.5)*.045;
+    this.c=CL[Math.floor(Math.random()*CL.length)];
+    this.s=SH[Math.floor(Math.random()*SH.length)];
+    this.op=.5+Math.random()*.5;
+  }
+  draw(){
+    ctx.save();ctx.globalAlpha=this.op;ctx.translate(this.x,this.y);ctx.rotate(this.a);ctx.fillStyle=this.c;
+    switch(this.s){
+      case'circle':ctx.beginPath();ctx.arc(0,0,this.r,0,Math.PI*2);ctx.fill();break;
+      case'petal':ctx.beginPath();ctx.ellipse(0,0,this.r*.7,this.r*2.2,0,0,Math.PI*2);ctx.fill();break;
+      case'diamond':ctx.beginPath();ctx.moveTo(0,-this.r*1.6);ctx.lineTo(this.r,0);ctx.lineTo(0,this.r*1.6);ctx.lineTo(-this.r,0);ctx.closePath();ctx.fill();break;
+      case'leaf':ctx.beginPath();ctx.ellipse(0,-this.r*.5,this.r*.6,this.r*1.4,Math.PI*.1,0,Math.PI*2);ctx.fill();break;
+    }
+    ctx.restore();
+  }
+  update(){
+    this.x+=this.vx;this.y+=this.vy;this.a+=this.da;
+    this.vx+=(Math.random()-.5)*.05;
+    if(this.y>C.height+30)this.reset(false);
+  }
+}
+const ps=Array.from({length:70},()=>new P(true));
+(function loop(){ctx.clearRect(0,0,C.width,C.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);})();
+
+/* ─── Floating emoji flowers ─── */
+const EM=['🌸','🌺','🌼','🪷','🌻','✨','🏵️','🎊','🌹'];
+const fw=document.getElementById('fw');
+function spawnFlower(){
+  const el=document.createElement('div');el.className='fem';
+  el.textContent=EM[Math.floor(Math.random()*EM.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.bottom='-40px';
+  el.style.fontSize=(1+Math.random()*1.4)+'rem';
+  const d=8+Math.random()*9;
+  el.style.animationDuration=d+'s';
+  el.style.animationDelay=(Math.random()*2.5)+'s';
+  fw.appendChild(el);
+  setTimeout(()=>el.remove(),(d+5)*1000);
+}
+setInterval(spawnFlower,600);
+for(let i=0;i<14;i++)setTimeout(spawnFlower,i*160);
+
+/* ─── Cloth gentle wind animation ─── */
+const cloth=document.getElementById('clothPath');
+const poses=[
+  "M150 75 C 152 75, 205 82, 238 99 C 266 114, 272 138, 262 158 C 252 178, 228 188, 208 192 C 188 196, 170 193, 158 189 C 149 186, 146 180, 147 173 Z",
+  "M150 75 C 152 75, 208 79, 242 96 C 270 111, 276 136, 266 156 C 256 176, 230 188, 210 192 C 190 196, 172 193, 160 189 C 150 186, 147 180, 147 173 Z",
+  "M150 75 C 152 75, 202 84, 234 102 C 260 118, 264 142, 254 162 C 244 182, 222 190, 202 194 C 182 198, 165 194, 154 190 C 146 187, 144 181, 146 174 Z"
+];
+let pi=0,going=true;
+function animCloth(){
+  pi=(pi+1)%poses.length;
+  cloth.setAttribute('d',poses[pi]);
+  setTimeout(animCloth, 1800+Math.random()*800);
+}
+setTimeout(animCloth,2000);
+</script>
+</body>
+</html>
